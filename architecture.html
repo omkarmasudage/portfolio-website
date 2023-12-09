@@ -123,10 +123,17 @@
 			</div>
 			<!-- </div> -->
 			<script>
+				const capitalize = (str, lower = false) =>
+					(lower ? str.toLowerCase() : str).replace(
+						/(?:^|\s|["'([{])+\S/g,
+						(match) => match.toUpperCase()
+					);
 				let pagename = window.location.pathname
 					.split("/")[1]
 					.split(".")[0];
 				document.getElementById(pagename).classList.add("active");
+
+				console.log(pagename);
 			</script>
 		</body>
 	</main>

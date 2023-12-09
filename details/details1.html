@@ -1,74 +1,74 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>The Sandbox - Peter Braithwaite Studio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <main>
-    <body>
-      <header>
-        <div class="logo">
-          <span class="logo-text">RS</span>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="../index.html">Architecture</a></li>
-            <li><a href="../interior.html">Interior</a></li>
-            <li><a href="#">Graphic</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
+	<head>
+		<meta charset="UTF-8" />
+		<title>The Sandbox - Peter Braithwaite Studio</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- <header> -->
 
-      <main class="main-content">
-        <section class="hero-section">
-          <!-- Large hero image or image carousel -->
-          <div class="hero-details">
-            <h1 class="hero-title">The Sandbox</h1>
-            <p class="hero-subtitle">Peter Braithwaite Studio</p>
-            <!-- Additional details or metadata -->
-          </div>
-          <div class="image-gallery">
-            <div class="main-image">
-              <img
-                src="../images/13a-portobello-gro-works_15.jpg"
-                id="mainImg"
-                alt="Main Image"
-              />
-            </div>
-            <div class="thumbnail-images">
-              <img
-                src="../images/ceramic-house-studio-rap_2.jpg"
-                onclick="changeImage(this)"
-                alt="Thumbnail 1"
-              />
-              <img
-                src="../images/hokkaido-university-of-science-buildings-def-taisei-design-planners-architects-and-engineers_1.jpg"
-                onclick="changeImage(this)"
-                alt="Thumbnail 2"
-              />
-              <!-- Add more thumbnail images as needed -->
-            </div>
-          </div>
-        </section>
-        <!-- Other sections, content, related projects, etc. -->
-      </main>
-      <div class="content">
-        <h2>Description</h2>
-        <p>Project details, description, etc.</p>
+		<nav>
+			<ul>
+				<li><a href="../index.html">Architecture</a></li>
+				<li><a href="../interior.html">Interior</a></li>
+				<li><a href="#">Graphic</a></li>
+				<li><a href="#">Team</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+		<img class="nav_border_mobile" src="../images/nav_border_mobile.png" />
+		<!-- </header> -->
 
-        <b class="blueText">Houses</b>
-      </div>
-      <footer class="footer">
-        <!-- Footer content -->
-      </footer>
-      <script>
-        function changeImage(thumbnail) {
-          var mainImage = document.getElementById("mainImg");
-          mainImage.src = thumbnail.src;
-        }
-      </script>
-    </body>
-  </main>
+		<main class="main-content">
+			<section class="hero-section">
+				<!-- Large hero image or image carousel -->
+				<div class="hero-details">
+					<h1 class="hero-title">The Sandbox</h1>
+					<p class="hero-subtitle">Peter Braithwaite Studio</p>
+					<!-- Additional details or metadata -->
+				</div>
+				<div class="image-gallery">
+					<div class="main-image">
+						<img
+							src="../images/13a-portobello-gro-works_15.jpg"
+							id="mainImg"
+							alt="Main Image"
+						/>
+					</div>
+					<div class="thumbnail-images">
+						<img
+							src="../images/ceramic-house-studio-rap_2.jpg"
+							onclick="changeImage(this)"
+							alt="Thumbnail 1"
+						/>
+						<img
+							src="../images/hokkaido-university-of-science-buildings-def-taisei-design-planners-architects-and-engineers_1.jpg"
+							onclick="changeImage(this)"
+							alt="Thumbnail 2"
+						/>
+						<!-- Add more thumbnail images as needed -->
+					</div>
+				</div>
+			</section>
+			<!-- Other sections, content, related projects, etc. -->
+		</main>
+		<div class="content">
+			<h2>Description</h2>
+			<p>Project details, description, etc.</p>
+
+			<b class="blueText">Houses</b>
+		</div>
+		<footer class="footer">
+			<!-- Footer content -->
+		</footer>
+		<script>
+			// console.log(window.location.pathname.split("/")[1]);
+			function changeImage(thumbnail) {
+				var mainImage = document.getElementById("mainImg");
+				mainImage.src = thumbnail.src;
+			}
+			let pagename = window.location.pathname.split("/")[1].split(".")[0];
+			document.getElementById(pagename).classList.add("active");
+		</script>
+	</body>
 </html>
