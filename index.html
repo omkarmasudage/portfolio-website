@@ -1,35 +1,54 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Navbar with Logo</title>
+		<title>PK Design Studio</title>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
-	<!-- <div class="loader-container" id="loader">
-    <div id="preloader"></div>
-  </div> -->
+	<div class="loader-container" id="loader">
+		<div id="preloader"></div>
+	</div>
 	<!-- <header> -->
 
 	<div class="nav_cover"></div>
 	<!-- </header> -->
 
 	<body>
-		<nav>
-			<ul>
-				<li><a id="home" href="index.html">Home</a></li>
-				<li>
-					<a id="architecture" href="architecture.html"
-						>Architecture</a
-					>
-				</li>
-				<li><a id="interior" href="interior.html">Interior</a></li>
-				<li><a id="graphic" href="graphic.html">Graphic</a></li>
-				<li><a id="home" href="#">Team</a></li>
-				<li><a id="home" href="#">Contact</a></li>
-			</ul>
+		<nav id="home_nav">
+			<div class="nav_links">
+				<ul>
+					<li><a id="home" href="index.html">Home</a></li>
+					<li>
+						<a id="architecture" href="architecture.html"
+							>Architecture</a
+						>
+					</li>
+					<li><a id="interior" href="interior.html">Interior</a></li>
+					<li><a id="graphic" href="graphic.html">Graphic</a></li>
+					<li><a id="home" href="#">Team</a></li>
+					<li><a id="home" href="#">Contact</a></li>
+				</ul>
+				<img
+					class="nav_border_mobile"
+					src="./images/nav_border_mobile.png"
+				/>
+			</div>
+
 			<img class="nav_border" src="images/nav_border.png" />
 		</nav>
+		<!-- <img
+			class="nav_border_mobile"
+			src="./images/nav_border_mobile.png"
+			style="left: -3%; width: 100vw"
+		/> -->
+
 		<main class="home_pg">
-			<div class="content"></div>
+			<!-- <video id="fullScreenVideo" autoplay muted preload="auto">
+				<source src="./" type="video/mp4" />
+			</video> -->
+			<div class="content">
+				<div class="carousel" id="imageCarousel"></div>
+			</div>
 			<div class="content">
 				<div class="left-box">
 					<img
@@ -65,14 +84,23 @@
 				</div>
 			</footer> -->
 
-			<!-- <script>
-        // Hide loader and display content after 10 seconds
-        setTimeout(function () {
-          document.getElementById("loader").style.display = "none";
-          document.getElementById("content").style.display = "block";
-        }, 10000); // 10 seconds
-      </script> -->
 			<script>
+				// Hide loader and display content after 10 seconds
+				document.getElementById("home_nav").style.display = "none";
+				setTimeout(function () {
+					document.getElementById("loader").style.display = "none";
+					document.getElementById("home_nav").style.display = "flex";
+					// document.getElementById("content").style.display = "block";
+				}, 10000); // 10 seconds
+			</script>
+			<script>
+				// document.addEventListener("DOMContentLoaded", (event) => {
+				// 	const video = document.getElementById("fullScreenVideo");
+				// 	video.addEventListener("ended", (event) => {
+				// 		video.style.display = "none";
+				// 	});
+				// });
+
 				let pagename = window.location.pathname
 					.split("/")[1]
 					.split(".")[0];
@@ -81,6 +109,34 @@
 					document.getElementById("home").classList.add("active");
 				} else
 					document.getElementById(pagename).classList.add("active");
+
+				fetch("sketches.json")
+					.then((response) => response.json())
+					.then((data) => {
+						const imageCarousel =
+							document.getElementById("imageCarousel");
+						const images = data.images;
+						let index = 0;
+
+						// Function to fade images in and out automatically
+						function fadeImages() {
+							const currentImage = document.createElement("img");
+							currentImage.src = images[index];
+							currentImage.classList.add("active");
+
+							// Display the current image and handle cycling through images
+							imageCarousel.innerHTML = "";
+							imageCarousel.appendChild(currentImage);
+
+							index = (index + 1) % images.length;
+							setTimeout(fadeImages, 3000); // Change image every 3 seconds (adjust as needed)
+						}
+
+						fadeImages();
+					})
+					.catch((error) => {
+						console.log("Error fetching images:", error);
+					});
 			</script>
 		</main>
 	</body>
