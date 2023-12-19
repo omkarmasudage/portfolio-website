@@ -11,7 +11,9 @@
 	<nav>
 		<div class="logo">
 			<img class="logo_img" src="./images/PKDS_bk1.png" />
+			<div class="header">Architecture</div>
 		</div>
+
 		<div class="nav_links">
 			<ul>
 				<li><a id="home" href="index.html">Home</a></li>
@@ -22,14 +24,45 @@
 				</li>
 				<li><a id="interior" href="interior.html">Interior</a></li>
 				<li><a id="graphic" href="graphic.html">Graphic</a></li>
-				<li><a id="home" href="#">Team</a></li>
-				<li><a id="home" href="#">Contact</a></li>
+
+				<li><a id="contact" href="#">Contact</a></li>
 			</ul>
-			<img
-				class="nav_border_mobile"
-				src="./images/nav_border_mobile.png"
-			/>
 		</div>
+		<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+		<label for="drawer-toggle" class="drawer-label open">&#9776;</label>
+		<div class="drawer" id="drawer">
+			<div class="drawer-content nav_links">
+				<input
+					type="checkbox"
+					id="drawer-toggle"
+					class="drawer-toggle"
+				/>
+				<!-- <label for="drawer-toggle" class="drawer-label close"
+					>&#10006;</label -->
+				<label for="drawer-toggle" class="drawer-label close"
+					>&#9776;</label
+				>
+				<img class="nav_border" src="images/nav_border.png" />
+				<ul>
+					<li><a id="home" href="index.html">Home</a></li>
+					<li>
+						<a id="architecture" href="architecture.html"
+							>Architecture</a
+						>
+					</li>
+					<li><a id="interior" href="interior.html">Interior</a></li>
+					<li><a id="graphic" href="graphic.html">Graphic</a></li>
+
+					<li><a id="contact" href="#">Contact</a></li>
+					<img
+						class="nav_border_mobile"
+						src="./images/nav_border_mobile.png"
+					/>
+				</ul>
+			</div>
+		</div>
+
+		<!-- <button id="openDrawerBtn">Open Drawer</button> -->
 
 		<img class="nav_border" src="images/nav_border.png" />
 	</nav>
@@ -37,7 +70,7 @@
 	<div class="nav_cover"></div>
 
 	<!-- </div> -->
-	<main>
+	<main id="mainContent">
 		<body>
 			<!-- <div class="wrapper"> -->
 			<div class="header">
@@ -141,8 +174,94 @@
 					.split("/")[1]
 					.split(".")[0];
 				document.getElementById(pagename).classList.add("active");
+				const drawer = document.getElementById("drawer");
+				const elementInsideDrawer = drawer.querySelector(
+					`#${pagename}`
+				); // Use querySelector to find elements by ID
+				elementInsideDrawer &&
+					elementInsideDrawer.classList.add("active");
 
-				console.log(pagename);
+				// console.log(pagename);
+			</script>
+
+			<script defer>
+				// document
+				// 	.getElementById("openDrawerBtn")
+				// 	.addEventListener("click", function () {
+				// 		document.getElementById("drawer-toggle").checked =
+				// 			!document.getElementById("drawer-toggle").checked;
+				// 	});
+
+				const anchorElements =
+					document.querySelectorAll(".nav_links ul li a");
+
+				const idIndexMap = {};
+				// Iterate through the anchor elements
+				anchorElements.forEach((anchor, index) => {
+					// const id = anchor.getAttribute("id");
+					const href = anchor.getAttribute("href");
+					// Store the id and its index position in the object
+					idIndexMap[href] = index;
+				});
+				console.log(idIndexMap);
+
+				const linksArray = [];
+				// Iterate through the anchor elements and store their href attributes in the array
+				anchorElements.forEach((anchor) => {
+					const href = anchor.getAttribute("href");
+					linksArray.push(href);
+				});
+
+				const mainElement = document.getElementById("mainContent");
+
+				window.addEventListener("scroll", function () {
+					// Calculate the distance scrolled from the top
+					var scrollPosition =
+						window.scrollY ||
+						window.pageYOffset ||
+						document.documentElement.scrollTop;
+
+					// Calculate the height of the main element
+					var mainHeight = mainElement.offsetHeight;
+					// Calculate the height of the viewport
+					var windowHeight = window.innerHeight;
+					// Calculate the bottom position of the main element
+					var mainBottom = mainHeight - windowHeight;
+					// console.log(scrollPosition, mainBottom);
+
+					// Check if the user has scrolled to the end of the main element
+					if (scrollPosition >= mainBottom) {
+						console.log("End of main content reached!");
+						let currentPath =
+							window.location.pathname.split("/")[1];
+						window.location.href =
+							linksArray[idIndexMap[currentPath] + 1] ?? "#";
+					}
+				});
+
+				window.addEventListener("scroll", function () {
+					// Get the current scroll position
+					var scrollPosition =
+						window.scrollY ||
+						window.pageYOffset ||
+						document.documentElement.scrollTop;
+
+					// Check if the user has scrolled to the top
+					if (scrollPosition <= 1) {
+						console.log("You have reached the top of the page!");
+						let currentPath =
+							window.location.pathname.split("/")[1];
+						// console.log(
+						// 	currentPath,
+						// 	linksArray[idIndexMap[currentPath] - 1],
+						// 	idIndexMap[currentPath]
+						// );
+						currentPath =
+							currentPath == "/" ? "index.html" : currentPath;
+						window.location.href =
+							linksArray[idIndexMap[currentPath] - 1];
+					}
+				});
 			</script>
 		</body>
 	</main>

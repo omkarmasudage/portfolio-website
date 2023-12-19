@@ -28,14 +28,44 @@
 						<a id="interior" href="../interior.html">Interior</a>
 					</li>
 					<li><a id="graphic" href="../graphic.html">Graphic</a></li>
-					<li><a id="home" href="#">Team</a></li>
-					<li><a id="home" href="#">Contact</a></li>
+
+					<li><a id="contact" href="#">Contact</a></li>
 				</ul>
-				<img
-					class="nav_border_mobile"
-					src="../images/nav_border_mobile.png"
-				/>
 			</div>
+			<!-- <input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+			<label for="drawer-toggle" class="drawer-label open">&#9776;</label>
+			<div class="drawer" id="drawer">
+				<div class="drawer-content nav_links">
+					<input
+						type="checkbox"
+						id="drawer-toggle"
+						class="drawer-toggle"
+					/>
+
+					<label for="drawer-toggle" class="drawer-label close"
+						>&#9776;</label
+					>
+					<img class="nav_border" src="images/nav_border.png" />
+					<ul>
+						<li><a id="home" href="index.html">Home</a></li>
+						<li>
+							<a id="architecture" href="architecture.html"
+								>Architecture</a
+							>
+						</li>
+						<li>
+							<a id="interior" href="interior.html">Interior</a>
+						</li>
+						<li><a id="graphic" href="graphic.html">Graphic</a></li>
+
+						<li><a id="contact" href="#">Contact</a></li>
+						<img
+							class="nav_border_mobile"
+							src="../images/nav_border_mobile.png"
+						/>
+					</ul>
+				</div>
+			</div> -->
 
 			<img class="nav_border" src="../images/nav_border.png" />
 		</nav>
@@ -71,10 +101,10 @@
 				</div>
 			</div>
 			<!-- </section> -->
-			<h2>Description</h2>
-			<p>Project details, description, etc.</p>
+			<h3 class="desc_subheader">Description</h3>
+			<p class="desc">Project details, description, etc.</p>
 
-			<b class="blueText">Houses</b>
+			<!-- <b class="blueText">Houses</b> -->
 			<!-- </div> -->
 			<!-- Other sections, content, related projects, etc. -->
 		</main>
@@ -91,5 +121,9 @@
 		}
 		let pagename = window.location.pathname.split("/")[1].split(".")[0];
 		document.getElementById(pagename).classList.add("active");
+
+		const drawer = document.getElementById("drawer");
+		const elementInsideDrawer = drawer.querySelector(`#${pagename}`); // Use querySelector to find elements by ID
+		elementInsideDrawer && elementInsideDrawer.classList.add("active");
 	</script>
 </html>

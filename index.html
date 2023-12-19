@@ -13,7 +13,7 @@
 	<div class="nav_cover"></div>
 	<!-- </header> -->
 
-	<body>
+	<body style="padding: 0">
 		<nav id="home_nav">
 			<div class="nav_links">
 				<ul>
@@ -25,13 +25,43 @@
 					</li>
 					<li><a id="interior" href="interior.html">Interior</a></li>
 					<li><a id="graphic" href="graphic.html">Graphic</a></li>
-					<li><a id="home" href="#">Team</a></li>
-					<li><a id="home" href="#">Contact</a></li>
+
+					<li><a id="contact" href="#">Contact</a></li>
 				</ul>
-				<img
-					class="nav_border_mobile"
-					src="./images/nav_border_mobile.png"
-				/>
+			</div>
+			<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+			<label for="drawer-toggle" class="drawer-label open">&#9776;</label>
+			<div class="drawer" id="drawer">
+				<div class="drawer-content nav_links">
+					<input
+						type="checkbox"
+						id="drawer-toggle"
+						class="drawer-toggle"
+					/>
+					<!-- <label for="drawer-toggle" class="drawer-label close"
+					>&#10006;</label -->
+					<label for="drawer-toggle" class="drawer-label close"
+						>&#9776;</label
+					>
+					<img class="nav_border" src="images/nav_border.png" />
+					<ul>
+						<li><a id="home" href="index.html">Home</a></li>
+						<li>
+							<a id="architecture" href="architecture.html"
+								>Architecture</a
+							>
+						</li>
+						<li>
+							<a id="interior" href="interior.html">Interior</a>
+						</li>
+						<li><a id="graphic" href="graphic.html">Graphic</a></li>
+						<li><a id="contact" href="#">Contact</a></li>
+						<img
+							class="nav_border_mobile"
+							src="./images/nav_border_mobile.png"
+						/>
+					</ul>
+				</div>
 			</div>
 
 			<img class="nav_border" src="images/nav_border.png" />
@@ -42,7 +72,7 @@
 			style="left: -3%; width: 100vw"
 		/> -->
 
-		<main class="home_pg">
+		<main class="home_pg" id="mainContent" style="padding: 0 10px">
 			<!-- <video id="fullScreenVideo" autoplay muted preload="auto">
 				<source src="./" type="video/mp4" />
 			</video> -->
@@ -61,7 +91,11 @@
 					</div>
 				</div>
 				<div class="right-box">
-					<img src="./images/home_header.png" alt="" />
+					<img
+						src="./images/home_header.png"
+						alt=""
+						style="width: 100%"
+					/>
 				</div>
 			</div>
 
@@ -104,9 +138,14 @@
 				let pagename = window.location.pathname
 					.split("/")[1]
 					.split(".")[0];
-				console.log(pagename);
-				if (pagename == "index") {
+				console.log(pagename, "");
+				const drawer = document.getElementById("drawer");
+				const elementInsideDrawer = drawer.querySelector(`#home`);
+
+				if (pagename == "index" || pagename == "") {
 					document.getElementById("home").classList.add("active");
+					elementInsideDrawer &&
+						elementInsideDrawer.classList.add("active");
 				} else
 					document.getElementById(pagename).classList.add("active");
 
@@ -139,5 +178,126 @@
 					});
 			</script>
 		</main>
+		<script defer>
+			const anchorElements =
+				document.querySelectorAll(".nav_links ul li a");
+
+			const idIndexMap = {};
+			// Iterate through the anchor elements
+			anchorElements.forEach((anchor, index) => {
+				// const id = anchor.getAttribute("id");
+				const href = anchor.getAttribute("href");
+				// Store the id and its index position in the object
+				idIndexMap[href] = index;
+			});
+			console.log(idIndexMap);
+
+			const linksArray = [];
+			// Iterate through the anchor elements and store their href attributes in the array
+			anchorElements.forEach((anchor) => {
+				const href = anchor.getAttribute("href");
+				linksArray.push(href);
+			});
+
+			setTimeout(function () {
+				// window.addEventListener("scroll", function () {
+				// 	console.log(
+				// 		window.innerHeight,
+				// 		window.scrollY,
+				// 		document.body.offsetHeight
+				// 	);
+				// 	if (
+				// 		window.innerHeight + window.scrollY >=
+				// 		document.body.offsetHeight
+				// 	) {
+				// 		console.log("You have reached the bottom of the page!");
+				// 	}
+				// });
+				window.addEventListener("scroll", function () {
+					// Calculate the distance scrolled from the top
+					var scrollPosition =
+						window.scrollY ||
+						window.pageYOffset ||
+						document.documentElement.scrollTop;
+
+					// Calculate the height of the entire document
+					var documentHeight = document.documentElement.scrollHeight;
+					// Calculate the height of the viewport
+					var windowHeight = window.innerHeight;
+					// console.log(
+					// 	documentHeight,
+					// 	windowHeight,
+					// 	scrollPosition,
+					// 	scrollPosition - (documentHeight - windowHeight) - 0.3
+					// );
+					// Calculate the bottom position of the viewport
+					var bottomPosition = documentHeight - windowHeight;
+					var scroll_diff = scrollPosition - bottomPosition - 0.3;
+					// console.log(scrollPosition - bottomPosition - 0.3);
+					// Check if the user has scrolled to the bottom
+					if (scroll_diff > -2 && scroll_diff < 2) {
+						console.log("You have reached the bottom of the page!");
+						let currentPath =
+							window.location.pathname == "/"
+								? "/index.html"
+								: window.location.pathname;
+						currentPath = currentPath.split("/")[1];
+						// console.log(
+						// 	currentPath,
+						// 	linksArray[idIndexMap[currentPath] + 1],
+						// 	idIndexMap[currentPath]
+						// );
+						window.location.href =
+							linksArray[idIndexMap[currentPath] + 1] ?? "#";
+					}
+				});
+				// const mainElement = document.getElementById("mainContent");
+				// const sensitivityThreshold = 0.1;
+				// window.addEventListener("scroll", function () {
+				// 	// Calculate the distance scrolled from the top
+				// 	var scrollPosition =
+				// 		window.scrollY ||
+				// 		window.pageYOffset ||
+				// 		document.documentElement.scrollTop;
+				// 	// Calculate the height of the main element
+				// 	var mainHeight = mainElement.offsetHeight;
+				// 	// Calculate the height of the viewport
+				// 	var windowHeight = window.innerHeight;
+				// 	// Calculate the bottom position of the main element
+				// 	var mainBottom =
+				// 		mainHeight - windowHeight * (1 - sensitivityThreshold);
+				// 	// Check if the user has scrolled to the end of the main element
+				// 	if (scrollPosition >= mainBottom) {
+				// 		console.log("End of main content reached!");
+				// 		let currentPath =
+				// 			window.location.pathname.split("/")[1];
+				// 		window.location.href =
+				// 			linksArray[idIndexMap[currentPath] + 1] ?? "#";
+				// 	}
+				// });
+				// window.addEventListener("scroll", function () {
+				// 	// Get the current scroll position
+				// 	var scrollPosition =
+				// 		window.scrollY ||
+				// 		window.pageYOffset ||
+				// 		document.documentElement.scrollTop;
+				// 	// Check if the user has scrolled to the top
+				// 	if (scrollPosition === 0) {
+				// 		console.log(
+				// 			"You have reached the top of the page!"
+				// 		);
+				// 		let currentPath =
+				// 			window.location.pathname.split("/")[1];
+				// 		console.log(
+				// 			currentPath,
+				// 			linksArray[idIndexMap[currentPath] - 1],
+				// 			idIndexMap[currentPath]
+				// 		);
+				// 		window.location.href =
+				// 			linksArray[idIndexMap[currentPath] - 1] ?? "/";
+				// 	}
+				// });
+			}, 10000); // 10 seconds
+		</script>
 	</body>
 </html>

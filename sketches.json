@@ -1,11 +1,11 @@
 {
 	"images": [
-		"./PNGs_sketches/01.png",
+		"./PNGs_sketches/01.svg",
 		"./PNGs_sketches/02.png",
-		"./PNGs_sketches/03.png",
-		"./PNGs_sketches/04.png",
-		"./PNGs_sketches/05.png",
-		"./PNGs_sketches/06.png",
-		"./PNGs_sketches/07.png"
+		"./PNGs_sketches/03.svg",
+		"./PNGs_sketches/04.svg",
+		"./PNGs_sketches/05.svg",
+		"./PNGs_sketches/06.svg",
+		"./PNGs_sketches/07.svg"
 	]
 }
