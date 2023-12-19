@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- <header> -->
+	<head>
+		<meta charset="UTF-8" />
+		<title>PK Design Studio</title>
+
+		<!-- <title>The Sandbox - Peter Braithwaite Studio</title> -->
+		<link rel="stylesheet" href="../styles.css" />
+	</head>
+	<!-- </header> -->
+	<div class="nav_cover"></div>
+
+	<body>
+		<nav>
+			<div class="nav_links">
+				<ul>
+					<li><a id="home" href="../index.html">Home</a></li>
+					<li>
+						<a
+							id="architecture"
+							class="active"
+							href="../architecture.html"
+							>Architecture</a
+						>
+					</li>
+					<li>
+						<a id="interior" href="../interior.html">Interior</a>
+					</li>
+					<li><a id="graphic" href="../graphic.html">Graphic</a></li>
+
+					<li><a id="contact" href="../contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- <input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+			<label for="drawer-toggle" class="drawer-label open">&#9776;</label>
+			<div class="drawer" id="drawer">
+				<div class="drawer-content nav_links">
+					<input
+						type="checkbox"
+						id="drawer-toggle"
+						class="drawer-toggle"
+					/>
+
+					<label for="drawer-toggle" class="drawer-label close"
+						>&#9776;</label
+					>
+					<img class="nav_border" src="images/nav_border.png" />
+					<ul>
+						<li><a id="home" href="index.html">Home</a></li>
+						<li>
+							<a id="architecture" href="architecture.html"
+								>Architecture</a
+							>
+						</li>
+						<li>
+							<a id="interior" href="interior.html">Interior</a>
+						</li>
+						<li><a id="graphic" href="graphic.html">Graphic</a></li>
+
+						<li><a id="contact" href="#">Contact</a></li>
+						<img
+							class="nav_border_mobile"
+							src="../images/nav_border_mobile.png"
+						/>
+					</ul>
+				</div>
+			</div> -->
+
+			<img class="nav_border" src="../images/nav_border.png" />
+		</nav>
+		<main class="main-content">
+			<!-- <div class="content"> -->
+			<!-- <section class="hero-section"> -->
+			<!-- Large hero image or image carousel -->
+			<!-- <div class="hero-details"> -->
+			<h1 class="hero-title">The Sandbox</h1>
+			<p class="hero-subtitle">Peter Braithwaite Studio</p>
+			<!-- Additional details or metadata -->
+			<!-- </div> -->
+			<div class="image-gallery">
+				<div class="main-image">
+					<img
+						src="../Content/Kailash_bungalow/Elevation.png"
+						id="mainImg"
+						alt="Main Image"
+					/>
+				</div>
+				<div class="thumbnail-images">
+					<img
+						src="../Content/Kailash_bungalow/Elevation.png"
+						onclick="changeImage(this)"
+						alt="Thumbnail 1"
+					/>
+					<img
+						src="../Content/Kailash_bungalow/View.png"
+						onclick="changeImage(this)"
+						alt="Thumbnail 2"
+					/>
+					<!-- <img
+						src="../Content/Kailash_bungalow/01_sec.png"
+						onclick="changeImage(this)"
+						alt="Thumbnail 3"
+					/> -->
+				</div>
+			</div>
+			<!-- </section> -->
+			<h3 class="desc_subheader">Description</h3>
+			<p class="desc">
+				Kailash: Aivale’s Residence Location: Pune, Maharashtra Year:
+				January, 2023 Area: 1500 Sq.ft. ‘Kailash’ bungalow captures the
+				essence of Lord Shiva’s sacred hometown. Just as Mount Kailash
+				is a place of spiritual significance and tranquility, our
+				bungalow embodies these qualities , offering a peaceful retreat
+				that resonates with divine aura of its namesake. Just as
+				pilgrims are drawn to the serenity of Mount Kailash, residents
+				of ‘Kailash’ bungalow will experience a similar sense of calm,
+				connection & harmony.
+				<br />
+
+				The concept draws inspiration from contemporary minimalist
+				architecture, rooted in ancient Vastu Shastra principles,
+				providing well ventilated & well lighted spaces.
+
+				<br />
+				Balconies are extended along a lateral axis, facing the
+				surrounding hills. The master bedroom maximizes its carpet area
+				by omitting a terrace, yet offers an exterior view through a
+				window-cum-balcony.
+			</p>
+
+			<!-- <b class="blueText">Houses</b> -->
+			<!-- </div> -->
+			<!-- Other sections, content, related projects, etc. -->
+		</main>
+	</body>
+
+	<!-- <footer class="footer"> -->
+	<!-- Footer content -->
+	<!-- </footer> -->
+	<script defer>
+		// console.log(window.location.pathname.split("/")[1]);
+		function changeImage(thumbnail) {
+			var mainImage = document.getElementById("mainImg");
+			mainImage.src = thumbnail.src;
+		}
+		let pagename = window.location.pathname.split("/")[1].split(".")[0];
+		document.getElementById(pagename).classList.add("active");
+
+		const drawer = document.getElementById("drawer");
+		const elementInsideDrawer = drawer.querySelector(`#${pagename}`); // Use querySelector to find elements by ID
+		elementInsideDrawer && elementInsideDrawer.classList.add("active");
+	</script>
+</html>

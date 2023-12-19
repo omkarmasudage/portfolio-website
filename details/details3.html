@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- <header> -->
+	<head>
+		<meta charset="UTF-8" />
+		<title>PK Design Studio</title>
+
+		<!-- <title>The Sandbox - Peter Braithwaite Studio</title> -->
+		<link rel="stylesheet" href="../styles.css" />
+	</head>
+	<!-- </header> -->
+	<div class="nav_cover"></div>
+
+	<body>
+		<nav>
+			<div class="nav_links">
+				<ul>
+					<li><a id="home" href="../index.html">Home</a></li>
+					<li>
+						<a
+							id="architecture"
+							class="active"
+							href="../architecture.html"
+							>Architecture</a
+						>
+					</li>
+					<li>
+						<a id="interior" href="../interior.html">Interior</a>
+					</li>
+					<li><a id="graphic" href="../graphic.html">Graphic</a></li>
+
+					<li><a id="contact" href="../contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- <input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+			<label for="drawer-toggle" class="drawer-label open">&#9776;</label>
+			<div class="drawer" id="drawer">
+				<div class="drawer-content nav_links">
+					<input
+						type="checkbox"
+						id="drawer-toggle"
+						class="drawer-toggle"
+					/>
+
+					<label for="drawer-toggle" class="drawer-label close"
+						>&#9776;</label
+					>
+					<img class="nav_border" src="images/nav_border.png" />
+					<ul>
+						<li><a id="home" href="index.html">Home</a></li>
+						<li>
+							<a id="architecture" href="architecture.html"
+								>Architecture</a
+							>
+						</li>
+						<li>
+							<a id="interior" href="interior.html">Interior</a>
+						</li>
+						<li><a id="graphic" href="graphic.html">Graphic</a></li>
+
+						<li><a id="contact" href="#">Contact</a></li>
+						<img
+							class="nav_border_mobile"
+							src="../images/nav_border_mobile.png"
+						/>
+					</ul>
+				</div>
+			</div> -->
+
+			<img class="nav_border" src="../images/nav_border.png" />
+		</nav>
+		<main class="main-content details">
+			<!-- <div class="content"> -->
+			<!-- <section class="hero-section"> -->
+			<!-- Large hero image or image carousel -->
+			<!-- <div class="hero-details"> -->
+			<h1 class="hero-title">Chhatrapati Shivaji Maharaj Memorial</h1>
+			<p class="hero-subtitle">Calangute, Goa.</p>
+			<!-- Additional details or metadata -->
+			<!-- </div> -->
+			<div class="image-gallery">
+				<div class="main-image">
+					<img
+						src="../Content/Shivaji_M_Goa/DWG.png"
+						id="mainImg"
+						alt="Main Image"
+					/>
+				</div>
+				<div class="thumbnail-images">
+					<img
+						src="../Content/Shivaji_M_Goa/Site_plan.png"
+						onclick="changeImage(this)"
+						alt="Thumbnail 1"
+					/>
+					<img
+						src="../Content/Shivaji_M_Goa/DWG.png"
+						onclick="changeImage(this)"
+						alt="Thumbnail 2"
+					/>
+					<!-- Add more thumbnail images as needed -->
+				</div>
+			</div>
+			<!-- </section> -->
+			<h3 class="desc_subheader">Description</h3>
+			<p class="desc">
+				Location: Calangute. Goa.<br />
+				Year: June, 2023<br />
+				Statue Height: <br />
+				Including Base: 21’(6.5 m)<br />
+				Excluding Base: 11’(3.4 m)<br />
+				Base Size: 10’ x 4’<br />
+				Statue Composition: Bronze Metal<br />
+				<br />
+
+				Chhatrapati Shivaji Maharaj Memorial Statue in Calangute, Goa,
+				marks a celebration of history, art, and the enduring spirit of
+				a legendary leader. As visitors gaze upon the minimalist statue
+				base and the towering figure of Shivaji Maharaj, they are
+				invited to not only witness history but to become a part of the
+				ongoing narrative of India's cultural richness. The memorial
+				stands as a timeless tribute, bridging the gap between the past
+				and the present, and inviting all to appreciate the legacy of
+				one of India's greatest warriors.
+				<br />
+
+				Rising above the serene landscapes of Calangute, the statue
+				captures the essence of Shivaji Maharaj's legacy with a
+				minimalist design, emphasizing simplicity and timelessness. The
+				project envisions a harmonious blend of artistic finesse and
+				historical significance, inviting visitors to reflect upon the
+				rich cultural tapestry of India.
+			</p>
+
+			<!-- <b class="blueText">Houses</b> -->
+			<!-- </div> -->
+			<!-- Other sections, content, related projects, etc. -->
+		</main>
+	</body>
+
+	<!-- <footer class="footer"> -->
+	<!-- Footer content -->
+	<!-- </footer> -->
+	<script defer>
+		// console.log(window.location.pathname.split("/")[1]);
+		function changeImage(thumbnail) {
+			var mainImage = document.getElementById("mainImg");
+			mainImage.src = thumbnail.src;
+		}
+		let pagename = window.location.pathname.split("/")[1].split(".")[0];
+		document.getElementById(pagename).classList.add("active");
+
+		const drawer = document.getElementById("drawer");
+		const elementInsideDrawer = drawer.querySelector(`#${pagename}`); // Use querySelector to find elements by ID
+		elementInsideDrawer && elementInsideDrawer.classList.add("active");
+	</script>
+</html>

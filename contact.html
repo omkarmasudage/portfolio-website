@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>PK Design Studio</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+
+	<!-- <header> -->
+
+	<div class="nav_cover"></div>
+	<!-- </header> -->
+
+	<body>
+		<nav>
+			<div class="logo">
+				<img class="logo_img" src="./images/PKDS_bk1.png" />
+				<div class="header">Contact</div>
+			</div>
+
+			<div class="nav_links">
+				<ul>
+					<li><a id="home" href="index.html">Home</a></li>
+					<li>
+						<a id="architecture" href="architecture.html"
+							>Architecture</a
+						>
+					</li>
+					<li><a id="interior" href="interior.html">Interior</a></li>
+					<li><a id="graphic" href="graphic.html">Graphic</a></li>
+
+					<li><a id="contact" href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+			<label for="drawer-toggle" class="drawer-label open">&#9776;</label>
+			<div class="drawer" id="drawer">
+				<div class="drawer-content nav_links">
+					<input
+						type="checkbox"
+						id="drawer-toggle"
+						class="drawer-toggle"
+					/>
+					<!-- <label for="drawer-toggle" class="drawer-label close"
+					>&#10006;</label -->
+					<label for="drawer-toggle" class="drawer-label close"
+						>&#9776;</label
+					>
+					<img class="nav_border" src="images/nav_border.png" />
+					<ul>
+						<li><a id="home" href="index.html">Home</a></li>
+						<li>
+							<a id="architecture" href="architecture.html"
+								>Architecture</a
+							>
+						</li>
+						<li>
+							<a id="interior" href="interior.html">Interior</a>
+						</li>
+						<li><a id="graphic" href="graphic.html">Graphic</a></li>
+
+						<li><a id="contact" href="contact.html">Contact</a></li>
+						<img
+							class="nav_border_mobile"
+							src="./images/nav_border_mobile.png"
+						/>
+					</ul>
+				</div>
+			</div>
+
+			<!-- <button id="openDrawerBtn">Open Drawer</button> -->
+
+			<img class="nav_border" src="images/nav_border.png" />
+		</nav>
+		<!-- <img
+			class="nav_border_mobile"
+			src="./images/nav_border_mobile.png"
+			style="left: -3%; width: 100vw"
+		/> -->
+
+		<main class="form_pg" id="mainContent">
+			<!-- <video id="fullScreenVideo" autoplay muted preload="auto">
+				<source src="./" type="video/mp4" />
+			</video> -->
+			<form id="contactForm" name="contactForm" class="contactForm">
+				<div class="contactForm_row">
+					<div>
+						<label for="firstName">First Name:*</label>
+						<input
+							type="text"
+							id="firstName"
+							name="data[First Name]"
+							required
+						/><br /><br />
+					</div>
+
+					<div>
+						<label for="lastName">Last Name:*</label>
+						<input
+							type="text"
+							id="lastName"
+							name="data[Last Name]"
+							required
+						/><br /><br />
+					</div>
+				</div>
+
+				<div class="contactForm_row">
+					<div>
+						<label for="companyEmail">Company Email:*</label>
+						<input
+							type="email"
+							id="companyEmail"
+							name="data[Company Email]"
+							required
+						/><br /><br />
+					</div>
+
+					<div>
+						<label for="phoneNumber">Phone Number:*</label>
+						<input
+							type="tel"
+							id="phoneNumber"
+							name="data[Phone Number]"
+							required
+						/><br /><br />
+					</div>
+				</div>
+
+				<div class="">
+					<label for="message">Message:</label><br />
+					<textarea
+						id="message"
+						name="data[Message]"
+						rows="4"
+						cols="50"
+					></textarea>
+				</div>
+				<input type="submit" value="Submit" class="btn_submit" />
+			</form>
+			<!-- <script src="https://sheetdb.io/s/f/a8jznj8r67nnx.js"></script> -->
+			<!-- <script src="https://sheetdb.io/s/f/qht9cmbjxjjqk.js"></script> -->
+		</main>
+
+		<script>
+			function sendDataToGoogleSheet(data, scriptURL) {
+				fetch(scriptURL, {
+					method: "POST",
+					mode: "no-cors",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				})
+					.then((response) => {
+						console.log("Data sent successfully!", response);
+						// Optionally, you can redirect the user to a thank you page or show a success message
+					})
+					.catch((error) => {
+						console.error("Error:", error);
+						// Handle errors here
+					});
+			}
+
+			// const form = document.forms["contactForm"];
+			const form = document.getElementById("contactForm");
+			// console.log(form);
+
+			// form.forEach((value, key) => {
+			// 	data[key] = value;
+			// });
+			// console.log(form);
+			const scriptURL = "https://sheetdb.io/api/v1/o4m9awpytnr6l";
+
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+				fetch(scriptURL, {
+					method: "POST",
+					body: new FormData(form),
+				})
+					.then((response) => console.log("Success!", response))
+					.catch((error) => console.error("Error!", error.message));
+			});
+		</script>
+		<script>
+			const capitalize = (str, lower = false) =>
+				(lower ? str.toLowerCase() : str).replace(
+					/(?:^|\s|["'([{])+\S/g,
+					(match) => match.toUpperCase()
+				);
+			let pagename = window.location.pathname.split("/")[1].split(".")[0];
+			document.getElementById(pagename).classList.add("active");
+			const drawer = document.getElementById("drawer");
+			const elementInsideDrawer = drawer.querySelector(`#${pagename}`); // Use querySelector to find elements by ID
+			elementInsideDrawer && elementInsideDrawer.classList.add("active");
+
+			// console.log(pagename);
+		</script>
+
+		<script defer>
+			// document
+			// 	.getElementById("openDrawerBtn")
+			// 	.addEventListener("click", function () {
+			// 		document.getElementById("drawer-toggle").checked =
+			// 			!document.getElementById("drawer-toggle").checked;
+			// 	});
+
+			const anchorElements =
+				document.querySelectorAll(".nav_links ul li a");
+
+			const idIndexMap = {};
+			// Iterate through the anchor elements
+			anchorElements.forEach((anchor, index) => {
+				// const id = anchor.getAttribute("id");
+				const href = anchor.getAttribute("href");
+				// Store the id and its index position in the object
+				idIndexMap[href] = index;
+			});
+			console.log(idIndexMap);
+
+			const linksArray = [];
+			// Iterate through the anchor elements and store their href attributes in the array
+			anchorElements.forEach((anchor) => {
+				const href = anchor.getAttribute("href");
+				linksArray.push(href);
+			});
+
+			window.addEventListener("scroll", function () {
+				// Get the current scroll position
+				var scrollPosition =
+					window.scrollY ||
+					window.pageYOffset ||
+					document.documentElement.scrollTop;
+
+				// Check if the user has scrolled to the top
+				if (scrollPosition <= 0.5) {
+					console.log("You have reached the top of the page!");
+					let currentPath = window.location.pathname.split("/")[1];
+					currentPath =
+						currentPath == "/" ? "index.html" : currentPath;
+					window.location.href =
+						linksArray[idIndexMap[currentPath] - 1];
+				}
+			});
+		</script>
+	</body>
+</html>

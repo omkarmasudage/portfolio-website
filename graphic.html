@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -24,7 +25,7 @@
 				<li><a id="interior" href="interior.html">Interior</a></li>
 				<li><a id="graphic" href="graphic.html">Graphic</a></li>
 
-				<li><a id="contact" href="#">Contact</a></li>
+				<li><a id="contact" href="contact.html">Contact</a></li>
 			</ul>
 		</div>
 		<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
@@ -52,7 +53,7 @@
 					<li><a id="interior" href="interior.html">Interior</a></li>
 					<li><a id="graphic" href="graphic.html">Graphic</a></li>
 
-					<li><a id="contact" href="#">Contact</a></li>
+					<li><a id="contact" href="contact.html">Contact</a></li>
 					<img
 						class="nav_border_mobile"
 						src="./images/nav_border_mobile.png"
@@ -175,8 +176,9 @@
 			</script>
 
 			<script defer>
-				const anchorElements =
-					document.querySelectorAll(".nav_links ul li a");
+				const anchorElements = document.querySelectorAll(
+					".drawer-content ul li a"
+				);
 
 				const idIndexMap = {};
 				// Iterate through the anchor elements
@@ -194,6 +196,8 @@
 					const href = anchor.getAttribute("href");
 					linksArray.push(href);
 				});
+				console.log(linksArray);
+				const mainElement = document.getElementById("mainContent");
 
 				window.addEventListener("scroll", function () {
 					// Calculate the distance scrolled from the top
