@@ -15,7 +15,7 @@ function App() {
     // Simulating a delay to mimic data fetching or other initialization
     const delay = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 6000);
 
     // Cleanup the timeout on component unmount
     return () => clearTimeout(delay);
@@ -23,19 +23,24 @@ function App() {
 
   return (
     <div>
-      <Router>
-        <div className="flex">
-          <div className="max-w-xs h-screen md:min-w-[20rem]">
-            <Navbar2 />
+      {isLoading ? (
+        // Loading spinner or message
+        <div><Loader /></div>
+      ) : (
+        <Router>
+          <div className="flex">
+            <div className="max-w-xs h-screen md:min-w-[20rem]">
+              <Navbar2 />
+            </div>
+            <div className="flex-1">
+              <Routes>
+                <Route exact path='/' element={<Home2 />}></Route>
+                <Route exact path="/detail/:imageId" element={<Details />} />
+              </Routes>
+            </div>
           </div>
-          <div className="flex-1">
-            <Routes>
-              <Route exact path='/' element={<Home2 />}></Route>
-              <Route exact path="/detail/:imageId" element={<Details/>} />
-            </Routes>
-          </div>
-        </div>
-      </Router>
+        </Router>
+      )}
     </div>
   );
 }
