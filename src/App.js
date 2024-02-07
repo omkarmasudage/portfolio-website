@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Home from './components/Home';
 import Loader from './components/Loader';
-import Navbar from './components/Navbar';
+import Navbar2 from './components/Navbar2';
+import Home2 from './components/Home2';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Details from './components/Details';
 
 function App() {
   // Loader
@@ -21,19 +23,19 @@ function App() {
 
   return (
     <div>
-      {isLoading ? (
-        // Loading spinner or message
-        <div><Loader /></div>
-      ) : (
-        <div className="grid grid-cols-12 h-screen">
-          <div>
-            <Navbar />
+      <Router>
+        <div className="flex">
+          <div className="max-w-xs h-screen md:min-w-[20rem]">
+            <Navbar2 />
           </div>
-          <div className="col-span-11 p-4">
-            <Home />
+          <div className="flex-1">
+            <Routes>
+              <Route exact path='/' element={<Home2 />}></Route>
+              <Route exact path="/detail/:imageId" element={<Details/>} />
+            </Routes>
           </div>
         </div>
-      )}
+      </Router>
     </div>
   );
 }

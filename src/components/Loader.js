@@ -1,0 +1,13 @@
+import React from 'react'
+import loader from "../assets/loader.gif"
+
+const Loader = () => {
+    return (
+        <div className='m-0 p-0 flex justify-center items-center overflow-hidden'>
+            <img src={loader} className=" w-full h-screen"/>
+        </div>
+
+    )
+}
+
+export default Loader
