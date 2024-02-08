@@ -4,7 +4,7 @@ import loader from "../assets/loader.gif"
 const Loader = () => {
     return (
         <div className='m-0 p-0 flex justify-center items-center overflow-hidden'>
-            <img src={loader} className=" w-full h-screen"/>
+            <img src={loader} className=" w-full h-screen" alt='loader'/>
         </div>
 
     )

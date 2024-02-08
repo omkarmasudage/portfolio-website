@@ -17,7 +17,7 @@ const Details = () => {
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <div className="flex flex-wrap w-1/2">
                             <div className="md:p-2 p-1 w-full">
-                                <img className="w-full h-full object-contain block" src={image1} id="mainImg" alt="Main Image" />
+                                <img className="w-full h-full object-contain block" src={image1} id="mainImg" alt="MainImage" />
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
                                 <img

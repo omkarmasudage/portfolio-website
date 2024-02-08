@@ -6,7 +6,6 @@ import Architecture from './Architecture'
 import Interior from './Interior'
 import Graphic from './Graphic'
 import Contact from './Contact'
-import Details from './Details'
 import SliderImg from './SliderImg';
 
 const Home2 = () => {
@@ -65,10 +64,10 @@ const Home2 = () => {
     return (
         <div className="flex flex-col justify-center items-center">
             <section className={`home container px-5 ${activeSection === 'home' ? 'fly-in-element' : ''}`} id="home">
-                <SliderImg />
                 <div className="text-gray-600 body-font">
                     <div className="py-14 mx-auto flex flex-col">
                         <div className="mx-auto">
+                            <SliderImg />
                             <div className="text-gray-600 body-font">
                                 <div className="container px-5 py-14 mx-auto">
                                     <div className="flex flex-wrap -mx-4 -mb-10 text-center">
