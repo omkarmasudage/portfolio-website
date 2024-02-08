@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import sheetdb from 'sheetdb-node';
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,29 +14,61 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(name, lname, email, phone, message);
-        const data = {
-            Name: name, Lname: lname, Email: email, Phone: phone, Message: message
-        }
-        axios.post('', data).then((response) => {
-            console.log('');
-            setName('');
-            setLname('');
-            setEmail('');
-            setPhone('');
-            setMessage('');
-        })
-        toast.success('Form submitted successfully', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-    }
+
+        // Extract form data
+        const formData = [
+            {
+                Name: name,
+                Lname: lname,
+                Email: email,
+                Phone: phone,
+                Message: message
+            }
+        ];
+
+        const config = {
+            address: 'https://sheetdb.io/api/v1/zcwbzp6kdjw8d',
+        };
+
+        // Create new client
+        const client = sheetdb(config);
+
+        // Send data to sheetdb
+        client.create(formData)
+            .then((response) => {
+                console.log('Data stored in sheetdb:', response);
+            })
+            .catch((error) => {
+                console.error('Error storing data in sheetdb:', error);
+            });
+
+    };
+    // Send data to server using axios
+    // axios.post('https://sheetdb.io/api/v1/zcwbzp6kdjw8d', formData)
+    //     .then((response) => {
+    //         console.log('Data submitted successfully:', response.data);
+    //         // Clear form fields after successful submission
+    //         setName('');
+    //         setLname('');
+    //         setEmail('');
+    //         setPhone('');
+    //         setMessage('');
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error submitting form data:', error);
+    //     });
+
+    // // Display success message using toast
+    // toast.success('Form submitted successfully', {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    // });
 
 
 
@@ -66,32 +99,32 @@ const Contact = () => {
                         <div className="flex flex-wrap -m-2">
                             <div className="p-2 w-1/2">
                                 <div className="relative">
-                                    <label htmlFor="name" className="leading-7 text-sm text-black">First Name</label>
-                                    <input type="text" id="name" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setName(e.target.value)} value={name} required />
+                                    <label className="leading-7 text-sm text-black">First Name</label>
+                                    <input type="text" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setName(e.target.value)} value={name} required />
                                 </div>
                             </div>
                             <div className="p-2 w-1/2">
                                 <div className="relative">
-                                    <label htmlFor="name" className="leading-7 text-sm text-black">Last Name</label>
-                                    <input type="text" id="name" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setLname(e.target.value)} value={lname} required />
+                                    <label className="leading-7 text-sm text-black">Last Name</label>
+                                    <input type="text" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setLname(e.target.value)} value={lname} required />
                                 </div>
                             </div>
                             <div className="p-2 w-1/2">
                                 <div className="relative">
-                                    <label htmlFor="email" className="leading-7 text-sm text-black">Company Email</label>
-                                    <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setEmail(e.target.value)} value={email} required />
+                                    <label className="leading-7 text-sm text-black">Company Email</label>
+                                    <input type="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setEmail(e.target.value)} value={email} required />
                                 </div>
                             </div>
                             <div className="p-2 w-1/2">
                                 <div className="relative">
-                                    <label htmlFor="name" className="leading-7 text-sm text-black">Phone Number</label>
-                                    <input type="text" id="name" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setPhone(e.target.value)} value={phone} required />
+                                    <label className="leading-7 text-sm text-black">Phone Number</label>
+                                    <input type="phone" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={(e) => setPhone(e.target.value)} value={phone} required />
                                 </div>
                             </div>
                             <div className="p-2 w-full">
                                 <div className="relative">
-                                    <label htmlFor="message" className="leading-7 text-sm text-black">Message</label>
-                                    <textarea id="message" name="message" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" onChange={(e) => setMessage(e.target.value)} value={message} required></textarea>
+                                    <label className="leading-7 text-sm text-black">Message</label>
+                                    <textarea className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" onChange={(e) => setMessage(e.target.value)} value={message} required></textarea>
                                 </div>
                             </div>
                             <div className="p-2 w-full">
