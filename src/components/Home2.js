@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ScrollReveal from 'scrollreveal';
 import './style.css';
 import HL from "../assets/home-left.png"
 import HR from "../assets/home-right.png"
@@ -6,64 +7,23 @@ import Architecture from './Architecture'
 import Interior from './Interior'
 import Graphic from './Graphic'
 import Contact from './Contact'
-import Details from './Details'
 
 const Home2 = () => {
 
-    const [activeSection, setActiveSection] = useState('');
-
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         const sections = document.querySelectorAll('section');
-
-    //         sections.forEach((section) => {
-    //             const top = window.scrollY;
-    //             const offset = section.offsetTop - 150;
-    //             const height = section.offsetHeight;
-    //             const id = section.getAttribute('id');
-
-    //             if (top >= offset && top < offset + height) {
-    //                 section.classList.remove('fly-in-element');
-    //                 // section.classList.add('fly-out-element');
-    //                 setActiveSection(id);
-    //             }
-    //         });
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
-
     useEffect(() => {
-        const handleScroll = () => {
-            const sections = document.querySelectorAll('section');
+        ScrollReveal({
+            reset: true,
+            distance: '80px',
+            duration: 2000,
+            delay: 200
+        });
 
-            sections.forEach((section) => {
-                const top = window.scrollY;
-                const offset = section.offsetTop - 150;
-                const height = section.offsetHeight;
-                const id = section.getAttribute('id');
-
-                if (top >= offset && top < offset + height) {
-                    section.classList.remove('active');
-                    setActiveSection(id);
-                }
-            });
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        ScrollReveal().reveal('.home, .architecture, .interior, .graphic, .contact', { origin: 'top' });
     }, []);
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <section className={`home container px-5 ${activeSection === 'home' ? 'fly-in-element' : ''}`} id="home">
+            <section className="home container px-5" id="home">
                 <div className="text-gray-600 body-font">
                     <div className="py-14 mx-auto flex flex-col">
                         <div className="mx-auto">
@@ -91,20 +51,20 @@ const Home2 = () => {
                 </div>
             </section>
 
-            <section className={`architecture ${activeSection === 'architecture' ? 'fly-in-element' : 'fly-out-element'}`} id="architecture">
+            <section className="architecture" id="architecture">
                 <Architecture />
             </section>
 
-            <section className={`interior ${activeSection === 'interior' ? 'fly-in-element' : 'fly-out-element'}`} id="interior">
+            <section className="interior" id="interior">
                 <Interior />
             </section>
 
-            <section className={`graphic ${activeSection === 'graphic' ? 'fly-in-element' : 'fly-out-element'}`} id="graphic">
-                {/* <Graphic /> */}
-                <Interior/>
+            <section className="graphic" id="graphic">
+                <Graphic />
+                {/* <Interior/> */}
             </section>
 
-            <section className={`contact ${activeSection === 'contact' ? 'fly-in-element' : 'fly-out-element'}`} id="contact">
+            <section className="contact" id="contact">
                 <Contact />
             </section>
         </div>
