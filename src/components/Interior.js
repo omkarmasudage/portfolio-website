@@ -24,7 +24,7 @@ const Interior = () => {
 
     return (
         <div className="body-font">
-            <div className="container pl-5 pr-8 py-12 mx-auto flex flex-wrap">
+            <div className="container pl-5 pr-8 py-10 mx-auto flex flex-wrap">
                 <div className="flex flex-col">
                     <div className="h-1 bg-gray-200 rounded overflow-hidden">
                         <div className="w-24 h-full bg-[#622c00]"></div>
@@ -34,7 +34,7 @@ const Interior = () => {
                         <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed">“Our designs dance in the interplay of light and shadow, where every detail is deliberate, and every form has meaning. We celebrating the beauty of simplicity, unburdened by excess, and making way for brilliance to emerge from the void.</p>
                     </div>
                 </div>
-                <div className="container px-5 py-24 mx-auto">
+                <div className="container px-5 mx-auto">
                     <div className="flex flex-wrap -m-4">
                         {images.map((image, index) => (
                             <div key={index} className="hover:opacity-70 lg:w-1/4 md:w-1/2 p-4 w-full">
