@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.top-left-logo {
+  position: fixed;
+  top: 10px;
+  left: 200px;
+  z-index: 1000;
+  width: 300px;
+  height: auto;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
