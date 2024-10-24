@@ -39,6 +39,15 @@ header {
 	flex-shrink: 0;
 }
 
+.top-left-logo{
+	position: fixed; 
+    top: 10px; 
+    left: 200px; 
+    z-index: 1000; 
+    width: 300px; 
+    height: auto; /
+}
+
 footer {
 	width: 1120px;
 	height: 20px;
@@ -371,12 +380,13 @@ img.item {
 }
 
 .carousel {
-	margin: 0 auto;
+	margin-left:500px;
 	overflow: hidden;
 	width: 70%;
 	max-width: 400px;
 	padding: 2vw;
 	height: max-content;
+
 }
 /* Keyframes for fade-in and fade-out */
 @keyframes fadeIn {
