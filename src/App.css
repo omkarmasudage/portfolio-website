@@ -36,6 +36,20 @@
   width: 300px;
   height: auto;
 }
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .top-left-logo {
+    width: 150px; /* Smaller width on mobile */
+    left: 50px;   /* Adjust position on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-left-logo {
+    width: 100px; /* Further reduce width for very small screens */
+    left: 20px;   /* Position closer to the edge */
+  }
+}
 
 
 @keyframes App-logo-spin {
