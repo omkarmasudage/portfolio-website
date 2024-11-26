@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* .top-left-logo {
+  position: fixed;
+  top: 0px;
+  left: 360px;
+  z-index: 1000;
+  width: 240px;
+  height: auto;
+} */
+
+@keyframes hangingFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg); /* Start above the viewport */
+    opacity: -3; /* Invisible initially */
+  }
+  50% {
+    opacity: -1; /* Fully visible mid-fall */
+  }
+  70% {
+    transform: translateY(0) rotate(10deg); /* Slight swing */
+  }
+  85% {
+    transform: translateY(0) rotate(-10deg); /* Swing in the opposite direction */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* Settle in place */
+  }
+}
+
+.top-left-logo {
+  position: fixed;
+  top: 0px;
+  left: 360px;
+  z-index: 1000;
+  width: 240px;
+  height: auto;
+  animation: hangingFall 12s ease-out; /* Apply the animation */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .top-left-logo {
+    width: 150px; /* Smaller width on mobile */
+    left: 50px;   /* Adjust position on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-left-logo {
+    width: 100px; /* Further reduce width for very small screens */
+    left: 20px;   /* Position closer to the edge */
+  }
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
