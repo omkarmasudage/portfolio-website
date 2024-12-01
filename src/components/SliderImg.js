@@ -137,7 +137,7 @@ const SliderImg = () => {
     }, 2000); // Adjust time for display and transition (2s per phase)
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, [transitionState]);
+  }, [transitionState , images.length]);
 
   return (
     <div className="relative h-56 sm:h-64 xl:h-80 2xl:h-96 overflow-hidden">
