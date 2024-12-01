@@ -21,7 +21,7 @@ const Contact = () => {
                 Name: name,
                 Lname: lname,
                 Email: email,
-                Phone: phone,
+                Phone: phone,   
                 Message: message
             }
         ];
