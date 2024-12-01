@@ -148,11 +148,12 @@ const SliderImg = () => {
             index === currentIndex ? transitionState : ""
           }`}
         >
-          <img
-            className="w-full h-full object-contain"
-            src={image}
-            alt={`Image ${index + 1}`}
-          />
+        <img
+  className="w-full h-full object-contain"
+  src={image}
+  alt=""
+/>
+
         </div>
       ))}
     </div>

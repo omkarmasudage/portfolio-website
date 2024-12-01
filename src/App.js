@@ -3,10 +3,10 @@ import "./App.css"
 import Loader from "./components/Loader"
 import Navbar2 from "./components/Navbar2"
 import Home2 from "./components/Home2"
-//import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Details from "./components/Details"
 import UnconstructionImage from "../src/assets/UNDER_CONST.png"
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+//import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 
 function App() {
   // Loader
