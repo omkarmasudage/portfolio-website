@@ -36,14 +36,14 @@
   width: 240px;
   height: auto;
 } */
-
+/* under construction logo  */
 @keyframes hangingFall {
   0% {
     transform: translateY(-100vh) rotate(0deg); /* Start above the viewport */
-    opacity: -3; /* Invisible initially */
+    opacity: 0; /* Invisible initially */
   }
   50% {
-    opacity: -1; /* Fully visible mid-fall */
+    opacity: 1; /* Fully visible mid-fall */
   }
   70% {
     transform: translateY(0) rotate(10deg); /* Slight swing */
@@ -58,28 +58,34 @@
 
 .top-left-logo {
   position: fixed;
-  top: 0px;
-  left: 360px;
+  top: 0;
+  left: 20vw; /* Relative to the viewport width */
   z-index: 1000;
-  width: 240px;
+  width: 20vw; /* 20% of viewport width for responsiveness */
+  max-width: 240px; /* Ensure it doesn’t exceed a reasonable size */
   height: auto;
-  animation: hangingFall 12s ease-out; /* Apply the animation */
-}
+  animation: hangingFall 12s ease-out;
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .top-left-logo {
-    width: 150px; /* Smaller width on mobile */
-    left: 50px;   /* Adjust position on mobile */
+  /* Mobile-specific styles */
+  @media (max-width: 768px) {
+    left: 10vw; /* Adjust the left position for smaller screens */
+    width: 30vw; /* Increase the relative size for better visibility */
+  }
+
+  /* Very small screens */
+  @media (max-width: 480px) {
+    left: 5vw;
+    width: 40vw; /* Further increase size for tiny screens */
+  }
+
+  /* Large screens */
+  @media (min-width: 1024px) {
+    left: 25vw; /* Adjust position for larger screens */
+    width: 15vw; /* Reduce size for larger screens */
   }
 }
 
-@media (max-width: 480px) {
-  .top-left-logo {
-    width: 100px; /* Further reduce width for very small screens */
-    left: 20px;   /* Position closer to the edge */
-  }
-}
+
 
 
 @keyframes App-logo-spin {
@@ -89,6 +95,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box; /* Include padding and border in element size */
 }
 
 
