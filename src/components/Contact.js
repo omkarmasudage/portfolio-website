@@ -168,6 +168,134 @@
 // }
 
 // export default Contact
+// import React, { useState } from 'react';
+// import sheetdb from 'sheetdb-node';
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+// const Contact = () => {
+//   const [name, setName] = useState('');
+//   const [lname, setLname] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [message, setMessage] = useState('');
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     const formData = [
+//       {
+//         Name: name,
+//         Lname: lname,
+//         Email: email,
+//         Phone: phone,
+//         Message: message,
+//       },
+//     ];
+
+//     const config = {
+//       address: 'https://sheetdb.io/api/v1/zcwbzp6kdjw8d',
+//     };
+
+//     const client = sheetdb(config);
+
+//     client
+//       .create(formData)
+//       .then((response) => {
+//         console.log('Data stored in sheetdb:', response);
+//       })
+//       .catch((error) => {
+//         console.error('Error storing data in sheetdb:', error);
+//       });
+//   };
+
+//   return (
+//     <div className="min-h-screen bg-[235, 210, 190] flex flex-col items-center justify-center">
+//       <ToastContainer
+//         position="top-right"
+//         autoClose={5000}
+//         hideProgressBar={false}
+//         newestOnTop={false}
+//         closeOnClick
+//         rtl={false}
+//         pauseOnFocusLoss
+//         draggable
+//         pauseOnHover
+//         theme="light"
+//       />
+//       <div className="w-full max-w-4xl bg-[#fff5ec] shadow-md rounded-lg p-10 border border-[#d4a373]">
+//         <div className="text-center mb-8">
+//           <h1 className="text-3xl font-semibold text-[#622c00] font-serif">Contact Us</h1>
+//         </div>
+//         <form onSubmit={handleSubmit} className="space-y-6">
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//             <div>
+//               <label className="block text-sm font-medium text-[#622c00]">First Name</label>
+//               <input
+//                 type="text"
+//                 className="mt-1 block w-full border-[#d4a373] rounded-md shadow-sm focus:ring-[#622c00] focus:border-[#622c00] sm:text-sm"
+//                 onChange={(e) => setName(e.target.value)}
+//                 value={name}
+//                 required
+//               />
+//             </div>
+//             <div>
+//               <label className="block text-sm font-medium text-[#622c00]">Last Name</label>
+//               <input
+//                 type="text"
+//                 className="mt-1 block w-full border-[#d4a373] rounded-md shadow-sm focus:ring-[#622c00] focus:border-[#622c00] sm:text-sm"
+//                 onChange={(e) => setLname(e.target.value)}
+//                 value={lname}
+//                 required
+//               />
+//             </div>
+//           </div>
+//           <div>
+//             <label className="block text-sm font-medium text-[#622c00]">Company Email</label>
+//             <input
+//               type="email"
+//               className="mt-1 block w-full border-[#d4a373] rounded-md shadow-sm focus:ring-[#622c00] focus:border-[#622c00] sm:text-sm"
+//               onChange={(e) => setEmail(e.target.value)}
+//               value={email}
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label className="block text-sm font-medium text-[#622c00]">Phone Number</label>
+//             <input
+//               type="tel"
+//               className="mt-1 block w-full border-[#d4a373] rounded-md shadow-sm focus:ring-[#622c00] focus:border-[#622c00] sm:text-sm"
+//               onChange={(e) => setPhone(e.target.value)}
+//               value={phone}
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label className="block text-sm font-medium text-[#622c00]">Message</label>
+//             <textarea
+//               className="mt-1 block w-full border-[#d4a373] rounded-md shadow-sm focus:ring-[#622c00] focus:border-[#622c00] sm:text-sm"
+//               onChange={(e) => setMessage(e.target.value)}
+//               value={message}
+//               rows="4"
+//               required
+//             ></textarea>
+//           </div>
+//           <div className="flex justify-center">
+//             <button
+//               type="submit"
+//               className="px-6 py-2 bg-[#622c00] text-white font-medium rounded-md shadow-sm hover:bg-[#4b2100] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#622c00]"
+//             >
+//               Submit
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Contact;
+
 import React, { useState } from 'react';
 import sheetdb from 'sheetdb-node';
 import { ToastContainer } from 'react-toastify';
@@ -223,6 +351,15 @@ const Contact = () => {
         pauseOnHover
         theme="light"
       />
+      
+      {/* Horizontal Line Outside and Above */}
+      <div className="flex flex-col mb-8 w-full px-4">
+        <div className="h-1 bg-gray-200 rounded overflow-x-hidden">
+          <div className="w-24 h-full bg-[#622c00]"></div>
+        </div>
+      </div>
+
+      {/* Contact Form Box */}
       <div className="w-full max-w-4xl bg-[#fff5ec] shadow-md rounded-lg p-10 border border-[#d4a373]">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-semibold text-[#622c00] font-serif">Contact Us</h1>
