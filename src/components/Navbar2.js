@@ -131,6 +131,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from "../assets/logo.png";
 
+
 const Navbar2 = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('');
@@ -195,9 +196,27 @@ const Navbar2 = () => {
                 <a href="/#contact" className={`flex items-center justify-end p-2 text-gray-500 my-4 rounded-lg hover:text-[#622c00] hover:border-b-8 border-[#622c00] group ${activeSection === 'contact' ? 'active' : ''}`}>
                     Contact
                 </a>
-                <div className="h-3/4 w-10 absolute flex items-center justify" style={{ left: '16rem', top: '0rem' }}>
-                    <div className="h-[110%] w-7 rounded-b-lg bg-[#622c00] pointer-events-none"></div>
-                </div>
+                <div
+                   className="absolute flex items-center"
+                     style={{
+                        left: '16rem',
+                        top: '0rem',
+                        height: '75%',
+                        width: '2rem', // Slightly wider container
+                     }}
+>
+                    <div
+                        style={{
+                           height: '100%',
+                            width: '1.5rem', // Wider bar to match the uploaded image
+                            backgroundColor: '#622c00',
+                            borderBottomLeftRadius: '0.75rem', // Rounded bottom corners
+                            borderBottomRightRadius: '0.75rem',
+                            margin: '0 auto', // Centers the bar horizontally
+                        }}
+                ></div>
+             </div>
+
             </nav>
         </div>
     );

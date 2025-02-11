@@ -272,36 +272,31 @@ const Home2 = () => {
     <div className="flex flex-col items-center w-full">
       {/* Home Section */}
       <section className={`home container px-4 md:px-8 py-10 ${activeSection === 'home' ? 'fly-in-element' : ''}`} id="home">
-        <div className="text-gray-600 body-font">
-          <div className="flex flex-col items-center mx-auto">
-            <SliderImg />
-            <div className="container mx-auto flex flex-wrap py-10">
-              {/* Left Image */}
-              <div className="sm:w-1/2 w-full px-4 mb-6 sm:mb-0">
-                <div
-                  className="rounded-lg flex items-center justify-center bg-[#ebd2be] border border-[#ebd2be] h-52 md:h-64"
-                >
-                  <img
-                    alt="content"
-                    className="object-contain max-h-full"
-                    src={HL}
-                  />
-                </div>
-              </div>
-              {/* Right Image */}
-              <div className="sm:w-1/2 w-full px-4">
-                <div className="rounded-lg overflow-hidden h-52 md:h-64">
-                  <img
-                    alt="content"
-                    className="object-cover h-full w-full"
-                    src={HR}
-                  />
-                </div>
-              </div>
-            </div>
+  <div className="text-gray-600 body-font">
+    <div className="flex flex-col items-center mx-auto">
+      <SliderImg />
+      <div className="container mx-auto flex flex-col sm:flex-row flex-wrap py-10">
+        {/* Left Image */}
+        <div className="sm:w-1/2 w-full px-4 mb-6 sm:mb-0 flex justify-center sm:justify-start">
+          <div className="rounded-lg flex items-center justify-start bg-[#ebd2be] border border-[#ebd2be] 
+                          h-36 sm:h-40 mt-[-20px] sm:mt-[-100px] w-[85%] sm:w-[70%] max-w-[320px] sm:max-w-[80%]">
+            <img alt="content" className="object-contain max-h-full w-auto max-w-full" src={HL} />
           </div>
         </div>
-      </section>
+        {/* Right Image */}
+        <div className="sm:w-1/2 w-full px-4 flex justify-center sm:justify-start">
+          <div className="rounded-lg overflow-hidden h-48 sm:h-64 mt-4 sm:mt-[-80px] 
+                          w-[90%] sm:w-[80%] max-w-[350px] sm:max-w-full">
+            <img alt="content" className="object-cover h-auto w-auto sm:h-80% sm:w-80% max-w-full" src={HR} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
       {/* Architecture Section */}
       <section
